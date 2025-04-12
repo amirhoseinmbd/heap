@@ -6,8 +6,7 @@ class MinHeap :
 
     def insert(self, input):
         self.hlist.append(input)
-        if len(self.hlist) > 2 :
-            self.hup(len(self.hlist)-1)
+        self.hup(len(self.hlist)-1)
         #finish
         
 
@@ -23,18 +22,20 @@ class MinHeap :
         #print(self.hlist)
         
     def min(self):
-        min = self.hlist[1]
-        print(min)
+        if len(self.hlist) <= 1:
+            return None  
+        min_val = self.hlist[1]
         self.hlist[1] = self.hlist[-1]
         self.hlist.pop()
         self.hdown(1)
+        return min_val
 
     def hdown(self,parent):
         lchild = parent * 2
         rchild = parent * 2 + 1
         
 
-        if lchild > len(self.hlist) and rchild > len(self.hlist) :
+        if lchild >= len(self.hlist) :
             return
 
 
